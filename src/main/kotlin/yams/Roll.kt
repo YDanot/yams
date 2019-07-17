@@ -8,4 +8,5 @@ class Roll(val dices: List<Int>) {
     fun threes(): Int = dices.filter { it == 3 }.sum()
     fun fours(): Int = dices.filter { it == 4 }.sum()
     fun fives(): Int = dices.filter { it == 5 }.sum()
+    fun sixes(): Int = dices.filter { it == 6 }.sum()
 }
