@@ -5,7 +5,7 @@ import org.junit.Test
 class TwosTest {
 
     @Test
-    internal fun ones_should_sum_dices_with_value_1() {
+    internal fun twos_should_sum_dices_with_value_2() {
         ones_for("1 2 3 4 5") should_be_valuated 2
         ones_for("1 1 3 4 5") should_be_valuated 0
         ones_for("2 2 2 4 5") should_be_valuated 6
