@@ -5,7 +5,7 @@ import org.junit.Test
 class ChanceTest {
 
     @Test
-    internal fun chance_should_sum_dices_value() {
+    internal fun chance_should_sum_dice_value() {
         chance_for("⚀ ⚀ ⚀ ⚀ ⚀") should_be_valuated 5
         chance_for("⚀ ⚀ ⚀ ⚀ ⚃") should_be_valuated 8
         chance_for("⚀ ⚀ ⚀ ⚀ ⚄") should_be_valuated 9

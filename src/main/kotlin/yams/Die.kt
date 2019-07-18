@@ -1,6 +1,6 @@
 package yams
 
-enum class Dice(val symbol: String, val value: Int) {
+enum class Die(val symbol: String, val value: Int) {
     ONE("⚀", 1),
     TWO("⚁", 2),
     THREE("⚂", 3),
@@ -10,7 +10,7 @@ enum class Dice(val symbol: String, val value: Int) {
 
 
     companion object {
-        fun fromValue(value: Int): Dice {
+        fun fromValue(value: Int): Die {
             return values().first { it.value == value }
         }
     }

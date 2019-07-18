@@ -5,7 +5,7 @@ import org.junit.Test
 class PairTest {
 
     @Test
-    internal fun should_sum_two_highest_matching_dices() {
+    internal fun should_sum_two_highest_matching_dice() {
         pair_for("⚀ ⚁ ⚂ ⚃ ⚄") should_be_valuated 0
         pair_for("⚀ ⚁ ⚂ ⚄ ⚄") should_be_valuated 10
         pair_for("⚀ ⚂ ⚂ ⚂ ⚄") should_be_valuated 6

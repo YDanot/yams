@@ -5,7 +5,7 @@ import org.junit.Test
 class SixesTest {
 
     @Test
-    internal fun fives_should_sum_dices_with_value_6() {
+    internal fun fives_should_sum_dice_with_value_6() {
         fives_for("⚀ ⚁ ⚂ ⚃ ⚅") should_be_valuated 6
         fives_for("⚀ ⚁ ⚂ ⚃ ⚃") should_be_valuated 0
         fives_for("⚀ ⚁ ⚅ ⚅ ⚅") should_be_valuated 18
