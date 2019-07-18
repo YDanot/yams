@@ -5,7 +5,7 @@ import org.junit.Test
 class ThreeOfAKindTest {
 
     @Test
-    internal fun should_sum_two_highest_matching_dice() {
+    internal fun should_sum_three_matching_dice() {
         threeOfAKind_for("⚀ ⚁ ⚂ ⚃ ⚄") should_be_valuated 0
         threeOfAKind_for("⚀ ⚄ ⚂ ⚄ ⚄") should_be_valuated 15
         threeOfAKind_for("⚁ ⚄ ⚁ ⚄ ⚄") should_be_valuated 15

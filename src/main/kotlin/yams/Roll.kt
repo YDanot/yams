@@ -9,10 +9,11 @@ class Roll(private val dice: List<Die>) {
     fun fours(): Int = dice.sum(Die.FOUR)
     fun fives(): Int = dice.sum(Die.FIVE)
     fun sixes(): Int = dice.sum(Die.SIX)
-    fun pair(): Int = dice.maxPairValue()?.times(2) ?: 0
+    fun pair(): Int = dice.highestPairValue()?.times(2) ?: 0
     fun pairs(): Int = if (dice.numberOfPairs() == 2) dice.pairs().sum().times(2) else 0
-    fun threeOfAKind(): Int = dice.threeOfAKind()?.value?.times(3) ?: 0
-    fun fourOfAKind(): Int = dice.fourOfAKind()?.value?.times(4) ?: 0
+    fun threeOfAKind(): Int = dice.withOccurrence(3)?.value?.times(3) ?: 0
+    fun fourOfAKind(): Int = dice.withOccurrence(4)?.value?.times(4) ?: 0
+    fun yams(): Int = if (dice.withOccurrence(5).exist()) 50 else 0
 
 }
 
@@ -24,7 +25,7 @@ private fun List<Die>.sum(dice: Die): Int {
     return this.filter { it == dice }.sum()
 }
 
-private fun List<Die>.maxPairValue(): Int? {
+private fun List<Die>.highestPairValue(): Int? {
     return this.pairs().maxValue()
 }
 
@@ -40,10 +41,9 @@ private fun List<Die>.pairs(): List<Die> {
     return this.groupingBy { it.value }.eachCount().filter { it.value >= 2 }.keys.map { Die.fromValue(it) }
 }
 
-private fun List<Die>.threeOfAKind(): Die? {
-    return this.groupingBy { it.value }.eachCount().filter { it.value >= 3 }.keys.map { Die.fromValue(it) }.firstOrNull()
-}
+private fun List<Die>.withOccurrence(occ: Int): Die? =
+    this.groupingBy { it.value }.eachCount().filter { it.value >= occ }.keys.map { Die.fromValue(it) }.firstOrNull()
 
-private fun List<Die>.fourOfAKind(): Die? {
-    return this.groupingBy { it.value }.eachCount().filter { it.value >= 4 }.keys.map { Die.fromValue(it) }.firstOrNull()
+private fun Die?.exist(): Boolean {
+    return this != null
 }
