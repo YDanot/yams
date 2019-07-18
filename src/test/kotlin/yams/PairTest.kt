@@ -8,7 +8,7 @@ class PairTest {
     internal fun should_sum_two_highest_matching_dices() {
         pair_for("⚀ ⚁ ⚂ ⚃ ⚄") should_be_valuated 0
         pair_for("⚀ ⚁ ⚂ ⚄ ⚄") should_be_valuated 10
-        pair_for("⚀ ⚁ ⚂ ⚂ ⚄") should_be_valuated 6
+        pair_for("⚀ ⚂ ⚂ ⚂ ⚄") should_be_valuated 6
         pair_for("⚀ ⚄ ⚂ ⚂ ⚄") should_be_valuated 10
     }
 
