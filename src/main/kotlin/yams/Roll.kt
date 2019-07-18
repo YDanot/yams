@@ -14,6 +14,8 @@ class Roll(private val dice: List<Die>) {
     fun threeOfAKind(): Int = dice.withOccurrence(3)?.value?.times(3) ?: 0
     fun fourOfAKind(): Int = dice.withOccurrence(4)?.value?.times(4) ?: 0
     fun yams(): Int = if (dice.withOccurrence(5).exist()) 50 else 0
+    fun smallStraight(): Int = if (dice.sorted().equals(listOf(Die.ONE, Die.TWO, Die.THREE, Die.FOUR, Die.FIVE))) 15 else 0
+
 
 }
 
