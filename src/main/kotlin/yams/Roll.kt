@@ -1,25 +1,33 @@
 package yams
 
-class Roll(private val dices: List<Int>) {
+class Roll(private val dices: List<Dice>) {
 
-    fun chance(): Int = dices.sum()
-    fun ones(): Int = dices.filter { it == 1 }.sum()
-    fun twos(): Int = dices.filter { it == 2 }.sum()
-    fun threes(): Int = dices.filter { it == 3 }.sum()
-    fun fours(): Int = dices.filter { it == 4 }.sum()
-    fun fives(): Int = dices.filter { it == 5 }.sum()
-    fun sixes(): Int = dices.filter { it == 6 }.sum()
+    fun chance()    : Int = dices.sum()
+    fun ones()      : Int = dices.sum(Dice.ONE)
+    fun twos()      : Int = dices.sum(Dice.TWO)
+    fun threes()    : Int = dices.sum(Dice.THREE)
+    fun fours()     : Int = dices.sum(Dice.FOUR)
+    fun fives()     : Int = dices.sum(Dice.FIVE)
+    fun sixes()     : Int = dices.sum(Dice.SIX)
 
     fun pair(): Int {
-        var save: Int = 0
+        var save = 0
 
         dices.sorted().reversed().forEach({
-            if (it == save) {
-                return it * 2
+            if (it.value == save) {
+                return save * 2
             }
-            save = it
+            save = it.value
         })
 
         return 0
     }
+}
+
+private fun List<Dice>.sum(): Int {
+    return this.map { it.value }.sum()
+}
+
+private fun List<Dice>.sum(dice: Dice): Int {
+    return this.filter { it == dice }.sum()
 }

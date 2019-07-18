@@ -7,5 +7,4 @@ enum class Dice(val symbol: String, val value: Int) {
     FOUR("⚃", 4),
     FIVE("⚄", 5),
     SIX("⚅", 6);
-
 }
