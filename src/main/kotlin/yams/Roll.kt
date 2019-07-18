@@ -16,6 +16,7 @@ class Roll(private val dice: List<Die>) {
     fun yams(): Int = if (dice.withOccurrence(5).exist()) 50 else 0
     fun smallStraight(): Int = if (dice.containsAll(listOf(Die.ONE, Die.TWO, Die.THREE, Die.FOUR, Die.FIVE))) 15 else 0
     fun largeStraight(): Int = if (dice.containsAll(listOf(Die.TWO, Die.THREE, Die.FOUR, Die.FIVE, Die.SIX))) 20 else 0
+    fun fullHouse(): Int = if (dice.withExactOccurrence(2).exist() && dice.withExactOccurrence(3).exist()) dice.sum() else 0
 }
 
 private fun List<Die>.sum(): Int {
@@ -41,6 +42,9 @@ private fun List<Die>.numberOfPairs(): Int {
 private fun List<Die>.pairs(): List<Die> {
     return this.groupingBy { it.value }.eachCount().filter { it.value >= 2 }.keys.map { Die.fromValue(it) }
 }
+
+private fun List<Die>.withExactOccurrence(occ: Int): Die? =
+    this.groupingBy { it.value }.eachCount().filter { it.value == occ }.keys.map { Die.fromValue(it) }.firstOrNull()
 
 private fun List<Die>.withOccurrence(occ: Int): Die? =
     this.groupingBy { it.value }.eachCount().filter { it.value >= occ }.keys.map { Die.fromValue(it) }.firstOrNull()
